@@ -1,0 +1,108 @@
+Window:
+<Window>:
+    anchor_x:"center"
+    canvas:
+        Color:
+            rgb:0,1,1
+        Rectangle:
+            size:root.width,root.height
+    BoxLayout:
+        orientation:"vertical"
+        size_hint: .6,.75 
+        spacing:"15dp"
+        border_width:"100dp"
+        border_color:(1,0,0,1)
+        canvas:
+            Color:
+                rgb:.20,.36,.55
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        Label:
+            size_hint_y:.7
+            border_width:"20dp"
+            font_size:"24dp"
+            background_color:(.11,.30,.40,1)
+            bold:True
+            canvas.before:
+                Color:
+                    rgba:self.background_color
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            text:"Followers"
+        GridLayout:
+            cols:2
+            size_hint_y:0.5 
+            Label:
+                text:"Enter Your Instagram ID "
+                size_hint_y:0.1
+                background_color:(.22,.65,.87,1)
+                canvas.before:
+                    Color:
+                        rgba:self.background_color
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+            TextInput:
+                id:user
+                size_hint_y:0.1
+                hint_text:"@user_ID"
+                multiline:False
+        GridLayout:
+            cols:2   
+            size_hint_y:0.5             
+            Label:
+                background_color:(.22,.65,.87,1)
+                canvas.before:
+                    Color:
+                        rgba:self.background_color
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                text:"Enter Your Email ID (optional)"
+                size_hint_y:0.1
+            TextInput:
+                id:email
+                hint_text:"name123@example.com"
+                multiline:False
+                size_hint_y:0.1
+        GridLayout:
+            size_hint_y:0.5 
+            cols:2    
+            Label:
+                background_color:(.22,.65,.87,1)
+                canvas.before:
+                    Color:
+                        rgba:self.background_color
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                text:"Enter Your Instagram Password"
+                size_hint_y:0.1
+            TextInput:
+                id:p
+                hint_text:""
+                multiline:False
+                password:True
+                size_hint_y:0.1
+        BoxLayout:
+            orientation:"vertical"
+            Button:
+                size_hint_y:.6
+                text:"Submit"
+                disabled:False
+                on_press:root.get_followers(self,email,user,p)
+            Label:
+                text:"Password is not Required if Your Account is Public"
+                size_hint_y:.75
+                background_color:(1,0,0,1)
+                canvas.before:
+                    Color:
+                        rgba:self.background_color
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+
+
