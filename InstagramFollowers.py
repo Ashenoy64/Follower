@@ -3,7 +3,7 @@ import smtplib
 import instaloader
 from tkinter.ttk import Progressbar
 import time
-
+#it is old version it migth not work
 from py import process
 #Main Window
 master=Tk()
@@ -33,8 +33,8 @@ def ask2():
         gmail.grid_remove()    
 
 def send():
-    gmail_user='default'
-    gmail_password='default password'
+    gmail_user='default'   # sender gmail id
+    gmail_password='default password' #sender gmail account password
     sent_from=gmail_user
     subject="Instagram Followers"
     global body
@@ -72,7 +72,7 @@ def search():
         loader=instaloader.Instaloader()
         
         if res1:
-           loader.login("default_userid","password")
+           loader.login("default_userid","password")  #add default instagram account userid and password
         else:
             loader.login(username.get(),password.get())  
         profile=instaloader.Profile.from_username(loader.context,username.get())
