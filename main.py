@@ -4,12 +4,12 @@ from kivy.lang import Builder
 from kivy.uix.anchorlayout import AnchorLayout
 from instaloader import Instaloader,Profile
 from threading import Thread
-
+#Emailing is not yet Implemented
 
 class Follower():
     email=""
-    default_user="##"
-    default_pass="##"
+    default_user="##" #Instagram user id
+    default_pass="##" #Instagrm password
     p=""
     user=""
     follower="Default"
