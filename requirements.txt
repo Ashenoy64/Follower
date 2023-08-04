@@ -1,0 +1,2 @@
+Kivy==2.1.0
+instaloader==4.10
