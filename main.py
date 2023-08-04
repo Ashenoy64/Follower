@@ -1,10 +1,7 @@
-from email.policy import default
 from kivy.app import App
-from kivy.lang import Builder
 from kivy.uix.anchorlayout import AnchorLayout
 from instaloader import Instaloader,Profile
 from threading import Thread
-#Emailing is not yet Implemented
 
 class Follower():
     email=""
