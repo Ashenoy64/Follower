@@ -1,7 +1,7 @@
 from tkinter import *
 import instaloader
 master=Tk()
-
+#instaloader is not working
 master.title("Following Back")
 master.geometry("500x300")
     
