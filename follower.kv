@@ -50,24 +50,6 @@ Window:
                 hint_text:"@user_ID"
                 multiline:False
         GridLayout:
-            cols:2   
-            size_hint_y:0.5             
-            Label:
-                background_color:(.22,.65,.87,1)
-                canvas.before:
-                    Color:
-                        rgba:self.background_color
-                    Rectangle:
-                        size:self.size
-                        pos:self.pos
-                text:"Enter Your Email ID (optional)"
-                size_hint_y:0.1
-            TextInput:
-                id:email
-                hint_text:"name123@example.com"
-                multiline:False
-                size_hint_y:0.1
-        GridLayout:
             size_hint_y:0.5 
             cols:2    
             Label:
@@ -92,17 +74,8 @@ Window:
                 size_hint_y:.6
                 text:"Submit"
                 disabled:False
-                on_press:root.get_followers(self,email,user,p)
-            Label:
-                text:"Password is not Required if Your Account is Public"
-                size_hint_y:.75
-                background_color:(1,0,0,1)
-                canvas.before:
-                    Color:
-                        rgba:self.background_color
-                    Rectangle:
-                        size:self.size
-                        pos:self.pos
+                on_press:root.get_followers(self,user,p)
+            
 
 
 

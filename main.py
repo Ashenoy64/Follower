@@ -4,60 +4,52 @@ from instaloader import Instaloader,Profile
 from threading import Thread
 
 class Follower():
-    email=""
-    default_user="##" #Instagram user id
-    default_pass="##" #Instagrm password
-    p=""
-    user=""
+    
+    password=""
+    username=""
     follower="Default"
-    is_public=True
-    def send(self):
-        pass
-    def assign(self,user,p,email):
+    
+    def assign(self,user,password):
         self.user=user
-        self.email=email
-        if p!="":
-            self.p=p
-            self.is_public=False
+        self.password=password
+
     def find(self):
-        print("works")
         loader=Instaloader()
         try:
-            if self.is_public:
-                loader.login(self.user,self.p)
-            else:
-                loader.login(self.default_user,self.default_pass)
-            profile=Profile.from_username(loader.context,self.user)
+            loader.login(self.username,self.password)
+            profile=Profile.from_username(loader.context,self.username)
+
             followers_iterator=profile.get_followers()
             followers=set()
             for f in followers_iterator:
                 followers.add(f.username)
+
+            followees_iterator = profile.get_followees()
             following=set()
-            for i in profile.get_followees():
+            for i in followees_iterator:
                 following.add(i.username)
-            cheaters=following-followers
-            no=len(cheaters)
-            for i in cheaters:
+
+            not_following=following-followers
+            number=len(not_following)
+            for i in not_following:
                 body=body+i+"\n"
             loader.close()
-            self.follower=body+"No of People:"+str(no)
+            self.follower=body+"No of People:"+str(number)
         except:
             self.follower="FAILED"
-        print(self.follower)
 
 class Window(AnchorLayout):
-    fol=Follower()
+    followerObject=Follower()
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def get_followers(self,button,email,user,p):
+    def get_followers(self,button,user,password):
         button.disabled=True
-        self.fol.assign(user.text,p.text,email)
-        obj=Thread(target=self.fol.find)
+        self.followerObject.assign(user.text,password.text)
+        obj=Thread(target=self.followerObject.find)
         obj.start()
-        if email!="":
-            self.fol.send()
-        print(self.fol.follower)
+        obj.join()
+        print(self.followerObject.follower)
 
 class FollowerApp(App):
     pass
